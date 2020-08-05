@@ -11,7 +11,7 @@ function Historic() {
   const fetchData = () => {
     axios({
       method: "get",
-      url: "https://kaboom.rksv.net/api/historical",
+      url: "http://kaboom.rksv.net/api/historical",
       responseType: "json",
     })
       .then((data) => setData(data.data))

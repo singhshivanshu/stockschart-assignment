@@ -7,7 +7,7 @@ import {getParsedData} from '../utils/utils'
 function Live() {
   const [currentdata, setCurrentData] = useState([]);
   
-  const socket = io("https://kaboom.rksv.net/watch");
+  const socket = io("http://kaboom.rksv.net/watch");
 
   useEffect(() => {
     socket.on("connect", () => {

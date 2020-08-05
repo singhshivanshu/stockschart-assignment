@@ -2,22 +2,12 @@ import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import CandleStick from "./CandleStick";
 import Card from "react-bootstrap/Card";
+import {getParsedData} from '../utils/utils'
 
 function Live() {
   const [currentdata, setCurrentData] = useState([]);
+  
   const socket = io("http://kaboom.rksv.net/watch");
-
-  function getParsedData(d) {
-    const dataArray = d.split(",");
-    console.log(dataArray);
-    const date = parseInt(dataArray[0]);
-    const open = parseFloat(dataArray[1]);
-    const high = parseFloat(dataArray[2]);
-    const low = parseFloat(dataArray[3]);
-    const close = parseFloat(dataArray[4]);
-    const volume = parseFloat(dataArray[5]);
-    return Object.assign({}, { date, open, high, low, close, volume });
-  }
 
   useEffect(() => {
     socket.on("connect", () => {

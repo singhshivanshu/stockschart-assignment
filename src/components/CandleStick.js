@@ -11,11 +11,7 @@ import { last, timeIntervalBarWidth } from "react-stockcharts/lib/utils";
 import { OHLCTooltip } from "react-stockcharts/lib/tooltip";
 import { HoverTooltip } from "react-stockcharts/lib/tooltip";
 import { ema } from "react-stockcharts/lib/indicator";
-import { format } from "d3-format";
-import { timeFormat } from "d3-time-format";
-
-const dateFormat = timeFormat("%Y-%m-%d");
-const numberFormat = format(".2f");
+import {tooltipContent} from "../utils/utils"
 
 const xAccessor = (d) => d && d.date;
 const margin = {
@@ -67,8 +63,8 @@ class CandleStick extends Component {
       <div className="candleStick">
         {newData.length > 1 && (
           <ChartCanvas
-            width={window.innerWidth > 768 ? 600: 300}
-            height={window.innerHeight > 768 ? 500: 400}
+            width={window.innerWidth > 820 ? 600: 300}
+            height={window.innerHeight > 820 ? 500: 400}
             margin={margin}
             type="svg"
             seriesName={`MSFT_${this.state.suffix}`}
@@ -110,36 +106,3 @@ CandleStick = fitWidth(CandleStick);
 
 export default CandleStick;
 
-function tooltipContent(ys) {
-  return ({ currentItem, xAccessor }) => {
-    return {
-      x: dateFormat(xAccessor(currentItem)),
-      y: [
-        {
-          label: "open",
-          value: currentItem.open && numberFormat(currentItem.open),
-        },
-        {
-          label: "high",
-          value: currentItem.high && numberFormat(currentItem.high),
-        },
-        {
-          label: "low",
-          value: currentItem.low && numberFormat(currentItem.low),
-        },
-        {
-          label: "close",
-          value: currentItem.close && numberFormat(currentItem.close),
-        },
-      ]
-        .concat(
-          ys.map((each) => ({
-            label: each.label,
-            value: each.value(currentItem),
-            stroke: each.stroke,
-          }))
-        )
-        .filter((line) => line.value),
-    };
-  };
-}

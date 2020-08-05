@@ -13,6 +13,7 @@ function Historic() {
       method: "get",
       url: "http://kaboom.rksv.net/api/historical",
       responseType: "json",
+      headers: {"Access-Control-Allow-Origin": "*"}
     })
       .then((data) => setData(data.data))
       .catch((error) => console.log(error));

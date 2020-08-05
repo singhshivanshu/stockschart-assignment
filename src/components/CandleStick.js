@@ -11,7 +11,6 @@ import { last, timeIntervalBarWidth } from "react-stockcharts/lib/utils";
 import { OHLCTooltip } from "react-stockcharts/lib/tooltip";
 import { HoverTooltip } from "react-stockcharts/lib/tooltip";
 import { ema } from "react-stockcharts/lib/indicator";
-
 import { format } from "d3-format";
 import { timeFormat } from "d3-time-format";
 
@@ -68,8 +67,8 @@ class CandleStick extends Component {
       <div className="candleStick">
         {newData.length > 1 && (
           <ChartCanvas
-            width={600}
-            height={500}
+            width={window.innerWidth > 768 ? 600: 300}
+            height={window.innerHeight > 768 ? 500: 400}
             margin={margin}
             type="svg"
             seriesName={`MSFT_${this.state.suffix}`}

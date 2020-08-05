@@ -57,7 +57,7 @@ function Live() {
 
   return (
     <div style={{ marginTop: "100px", marginBottom: "50px" }}>
-      <Card style={{ width: "100%" }} className="conatiner-card">
+      <Card style={{ width: "100%" }} className="container-card">
         <Card.Header>Live Data</Card.Header>
         <Card.Body style={{ justifyContent: "center" }}>
           <CandleStick data={currentdata} interval="second" latest={50} />

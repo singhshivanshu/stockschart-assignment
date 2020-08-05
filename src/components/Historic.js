@@ -47,7 +47,7 @@ function Historic() {
 
   return (
     <div style={{ marginTop: "100px"}}>
-      <Card style={{ width: '100%' }} className= "conatiner-card">
+      <Card style={{ width: '100%' }} className= "container-card">
         <Card.Header>Historical Data</Card.Header>
         <Card.Body>
           <CandleStick data={newData} interval="day" width={900} />
